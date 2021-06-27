@@ -1,5 +1,4 @@
 import shutil
-import psutil
 import ctypes
 import os
 import subprocess
@@ -70,12 +69,12 @@ else:
 print(" ")
 
 print("===       RAM        ===")
-ram_stats = psutil.virtual_memory()
-ram_total = ram_stats.total / 1073741824
-if ram_total > 3:
-    print("\033[0;32mTotal RAM : " + str(round(ram_total)) + " Go - OK\033[0;38m")
+print("\033[0;33mTotal RAM...\033[0;38m", end="\r")
+ram_total = int(str(subprocess.check_output("powershell (Get-CimInstance Win32_PhysicalMemory | Measure-Object -Property capacity -Sum).sum /1gb", shell=False)).split("b'")[1].split("\\r\\n")[0])
+if ram_total >= 4:
+    print("\033[0;32mTotal RAM : " + str(ram_total) + " Go - OK\033[0;38m")
 else:
-    print("\033[0;31mTotal RAM : " + str(round(ram_total)) + " Go - Not compatible\033[0;38m")
+    print("\033[0;31mTotal RAM : " + str(ram_total) + " Go - Not compatible\033[0;38m")
     win11_compat = False
 
 print(" ")
@@ -115,7 +114,7 @@ try:
         print("\033[0;31mTPM Version : " + str(tpm_result).split("\\xff: ")[2].split("\\r\\n")[0] + " - Not compatible\033[0;38m")
         win11_compat = False
 except:
-    print("\033[0;31mTPM Present : No - Not compatible")
+    print("\033[0;31mTPM Present : No - Not compatible\033[0;38m")
     win11_compat = False
 
 print(" ")
