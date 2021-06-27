@@ -104,15 +104,17 @@ else:
 print(" ")
 
 print("===       TPM        ===")
+print("\033[0;33mTPM Present...\033[0;38m", end="\r")
 tpm_result = subprocess.check_output("tpmtool getdeviceinformation", shell=True)
-if str(tpm_result).split("-TPM pr\\x82sent\\xff: ")[1].split("\\r\\n")[0] == "Vrai":
+try:
+    tpm_ver = str(tpm_result).split("\\xff: ")[2].split("\\r\\n")[0]
     print("\033[0;32mTPM Present : Yes - OK")
-    if str(tpm_result).split("-Version du TPM\\xff: ")[1].split("\\r\\n")[0] == "2.0":
+    if tpm_ver == "2.0":
         print("\033[0;32mTPM Version : 2.0 - OK\033[0;38m")
     else:
-        print("\033[0;31mTPM Version : " + str(tpm_result).split("-Version du TPM\\xff: ")[1].split("\\r\\n")[0] + " - Not compatible\033[0;38m")
+        print("\033[0;31mTPM Version : " + str(tpm_result).split("\\xff: ")[2].split("\\r\\n")[0] + " - Not compatible\033[0;38m")
         win11_compat = False
-else:
+except:
     print("\033[0;31mTPM Present : No - Not compatible")
     win11_compat = False
 
