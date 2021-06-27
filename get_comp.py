@@ -123,6 +123,6 @@ print("=        RESULT        =")
 print("========================")
 
 if win11_compat:
-    print("\033[0;32mYour computer is compatible with Windows 11 !\033[0;38m")
+    print("\033[0;32mYour computer is compatible with Windows 11!\033[0;38m")
 else:
-    print("\033[0;31mYour computer isn't compatible with Windows 11 !\033[0;38m")
+    print("\033[0;31mYour computer isn't compatible with Windows 11!\033[0;38m")
