@@ -16,8 +16,16 @@ if cpu_arch == "x64":
     cpu_name = str(subprocess.check_output("powershell -Command $ProgressPreference = 'SilentlyContinue' ; $(Get-ComputerInfo).CsProcessors.Name", shell=False)).split("b'")[1].split("\\r\\n")[0]
     cnp = cpu_name.split(" ")
     cpu_vendor = cnp[0]
-    cpu_family = cnp[1]
-    cpu_model = cnp[2]
+    if cpu_vendor != "AMD":
+        cpu_family = cnp[1]
+        cpu_model = cnp[2]
+    else:
+        cpu_family = cnp[1]
+        i = 2
+        while i < len(cnp) - 4:
+            cpu_family += " " + cnp[i]
+            i+=1
+        cpu_model = cnp[len(cnp) - 4]
     with open("compatible_cpus.json", "r") as f:
         cpus = json.load(f)
         cpus_vendor = []
