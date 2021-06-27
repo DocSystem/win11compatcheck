@@ -1,5 +1,7 @@
 # Windows 11 Compatibility Checker
 
+**FOR THE MOMENT, THE SCRIPT WILL SAY AMD CPUS ARE NOT COMPATIBLE, EVEN IF THEY ARE BECAUSE OF DIFFERENCES ON THE MICROSOFT LIST**
+
 A Python tool to check your computer's Windows 11 compatibility
 
 ## How to use
