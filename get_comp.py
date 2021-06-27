@@ -105,8 +105,8 @@ print(" ")
 
 print("===       TPM        ===")
 print("\033[0;33mTPM Present...\033[0;38m", end="\r")
-tpm_result = subprocess.check_output("tpmtool getdeviceinformation", shell=True)
 try:
+    tpm_result = subprocess.check_output("tpmtool getdeviceinformation", shell=True)
     tpm_ver = str(tpm_result).split("\\xff: ")[2].split("\\r\\n")[0]
     print("\033[0;32mTPM Present : Yes - OK")
     if tpm_ver == "2.0":
