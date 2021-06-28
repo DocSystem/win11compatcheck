@@ -13,7 +13,7 @@ if cpu_arch == "x64":
     # On continue, pour le moment c'est compatible
     print("\033[0;32mArchitecture : " + cpu_arch + " - OK\033[0;38m")
     print("\033[0;33mVendor...\033[0;38m", end="\r")
-    cpu_name = str(subprocess.check_output("powershell -Command $ProgressPreference = 'SilentlyContinue' ; $(Get-ComputerInfo).CsProcessors.Name", shell=False)).split("b'")[1].split("\\r\\n")[0]
+    cpu_name = str(subprocess.check_output("powershell -Command $ProgressPreference = 'SilentlyContinue' ; $(Get-ComputerInfo).CsProcessors.Name", shell=False)).split("b'")[1].split("\\r\\n")[0].strip()
     cnp = cpu_name.split(" ")
     cpu_vendor = cnp[0]
     if cpu_vendor != "AMD":
