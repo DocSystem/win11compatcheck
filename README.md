@@ -1,7 +1,5 @@
 # Windows 11 Compatibility Checker
 
-**FOR THE MOMENT, THE SCRIPT WILL SAY AMD CPUS ARE NOT COMPATIBLE, EVEN IF THEY ARE BECAUSE OF DIFFERENCES ON THE MICROSOFT LIST**
-
 A Python tool to check your computer's Windows 11 compatibility
 
 ## How to use
@@ -14,7 +12,5 @@ The script only works in Windows (you can't execute it from Windows or macOS)!
 * Wait and see if your PC is compatible with Windows 11
 
 ## Issues
-
-For the moment, I only tested the script on my computer which has an Intel Core i7-9750H and a TPM 2.0.
 
 If you have any issue with the script, report it on the [issues page](https://github.com/DocSystem/win11compatcheck/issues/)

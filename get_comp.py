@@ -22,10 +22,10 @@ if cpu_arch == "x64":
     else:
         cpu_family = cnp[1]
         i = 2
-        while i < len(cnp) - 4:
+        while i < len(cnp) - 3:
             cpu_family += " " + cnp[i]
             i+=1
-        cpu_model = cnp[len(cnp) - 4]
+        cpu_model = cnp[len(cnp) - 3]
     with open("compatible_cpus.json", "r") as f:
         cpus = json.load(f)
         cpus_vendor = []
