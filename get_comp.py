@@ -2,18 +2,15 @@ import shutil
 import ctypes
 import os
 import subprocess
+import platform
 import json
 
 win11_compat = True
 
 print("===       CPU        ===")
 print("\033[0;33mArchitecture...\033[0;38m", end="\r")
-try:
-    os.environ["PROGRAMFILES(X86)"]
-    cpu_arch = "x64"
-except:
-    cpu_arch = "x32"
-if cpu_arch == "x64":
+cpu_arch = platform.architecture()[0]
+if cpu_arch == "64bit":
     # On continue, pour le moment c'est compatible
     print("\033[0;32mArchitecture : " + cpu_arch + " - OK\033[0;38m")
     print("\033[0;33mVendor...\033[0;38m", end="\r")
