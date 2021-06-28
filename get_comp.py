@@ -8,7 +8,11 @@ win11_compat = True
 
 print("===       CPU        ===")
 print("\033[0;33mArchitecture...\033[0;38m", end="\r")
-cpu_arch = str(subprocess.check_output("powershell -Command $ProgressPreference = 'SilentlyContinue' ; $(Get-ComputerInfo).CsProcessors.Architecture", shell=False)).split("b'")[1].split("\\r\\n")[0]
+try:
+    os.environ["PROGRAMFILES(X86)"]
+    cpu_arch = "x64"
+except:
+    cpu_arch = "x32"
 if cpu_arch == "x64":
     # On continue, pour le moment c'est compatible
     print("\033[0;32mArchitecture : " + cpu_arch + " - OK\033[0;38m")
